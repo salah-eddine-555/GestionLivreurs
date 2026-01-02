@@ -17,8 +17,10 @@ abstract class Utilisateur {
         $this->role = $role;
         $this->actif = $actif;
     }
-
+    public function getNom(){ return $this->nom; }
+    
     public function getEmail(){ return $this->email ;}
     public function getRole(){ return $this->role; }
     public function isActif(){ return $this->actif;}
+    public function GetPassword(){ return $this->password; }
 }

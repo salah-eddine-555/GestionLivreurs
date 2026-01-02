@@ -3,8 +3,16 @@
 
 class Database {
 
-    public function connect(){
+    public static function connect(){
 
-       //
+        try{
+            $conn = new PDO('mysql:host=localhost;dbname=Livraison', 'root', '');
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "connexion succfully";
+
+            return $conn;
+        }catch(Exception $e){
+            Die("erreur lorsque la connexion au base de donnee : " . $e->getMessage());
+        }
     }
 }

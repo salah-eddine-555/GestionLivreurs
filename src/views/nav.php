@@ -94,8 +94,8 @@
                 <div class="project-name">DeliveryPro</div>
             </div>
             <div class="auth-buttons">
-                <a href="connexion.php"><button class="btn btn-connexion">Connexion<button></a>
-                <a href="inscription.php"><button class="btn btn-inscription">Inscription</button></a>
+                <a href="../views/connexion.php"><button class="btn btn-connexion">Connexion<button></a>
+                <a href="../views/inscription.php"><button class="btn btn-inscription">Inscription</button></a>
                 
             </div>
         </nav>
