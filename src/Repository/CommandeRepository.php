@@ -2,7 +2,7 @@
 namespace Youcode\GestionLivreurs\Repository;
 
 use Youcode\GestionLivreurs\config\Database;
-
+use Youcode\GestionLivreurs\Entity\Commande;
 
 class CommandeRepository {
 
@@ -20,10 +20,11 @@ class CommandeRepository {
             ":titre" => $commande->getTitreCommande(),
             ":description" => $commande->getDescriptionCommande(),
             ":depart" => $commande->getAddresseDepart(),
-            ":depart" => $commande->getAdresseArrive(),
-            ":statut" => $commande->getStaut(),
+            ":arrivee" => $commande->getAdresseArrive(),
+            ":statut" => $commande->getStatut(),
             ":id_client" => $ClientId
         ]);
+        return true;
     }
 
 

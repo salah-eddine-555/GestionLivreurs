@@ -1,7 +1,7 @@
 <?php
 namespace Youcode\GestionLivreurs\controller;
 
-use Youcode\GestionLivreurs\Serivce\CommandeService;
+use Youcode\GestionLivreurs\Service\CommandeService;
 
 
 class CommandeController {
@@ -12,7 +12,7 @@ class CommandeController {
     }
 
     public function create(array $data){
-        sessio_start();
+        SESSION_START();
 
         if(!isset($_SESSION['id'])){
             die("utilsateur non connecte");

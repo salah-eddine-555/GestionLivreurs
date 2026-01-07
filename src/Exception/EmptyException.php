@@ -1,5 +1,5 @@
 <?php
-
+namespace Youcode\GestionLivreurs\Exception;
 
 class EmptyException extends Exception {
 

@@ -19,6 +19,8 @@ class AuthController {
 
         if($user){
             session_start();
+            
+            $_SESSION['id'] = $user->getId();
             $_SESSION['email'] = $user->getEmail();
             $_SESSION['role'] = $user->getRole();
             $_SESSION['nom'] = $user->getNom();
@@ -41,6 +43,7 @@ class AuthController {
         $user = $this->service->register($nom, $prenom,$email,$password, $confirmPassword,$phone,$role);
         if($user){
             session_start();
+            $_SESSION['id'] = $user->getId();
             $_SESSION['email'] = $user->getEmail();
             $_SESSION['role'] = $user->getRole();
             $_SESSION['nom'] = $user->getNom();

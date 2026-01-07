@@ -1,4 +1,5 @@
 <?php
+namespace Youcode\GestionLivreurs\Exception;
 
 class ExceptionInvalidRole extends Exception {
 

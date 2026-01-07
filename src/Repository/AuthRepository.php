@@ -33,11 +33,17 @@ class AuthRepository {
         if($data){
             switch($data['role']){
                 case 'client':
-                    return new Client($data['nom'],$data['prenom'],$data['email'], $data['password'],$data['phone'],(bool)$data['actif']);
+                    $user = new Client($data['nom'],$data['prenom'],$data['email'], $data['password'],$data['phone'],(bool)$data['actif']);
+                    $user->setId($data['id']);
+                    return $user;
                 case 'livreur':
-                    return new Livreur($data['nom'],$data['prenom'],$data['email'], $data['password'],$data['phone'], (bool)$data['actif']);
+                    $user = new Livreur($data['nom'],$data['prenom'],$data['email'], $data['password'],$data['phone'], (bool)$data['actif']);
+                     $user->setId($data['id']);
+                    return $user;
                 case 'admin':
-                    return new Admin($data['nom'],$data['prenom'],$data['email'], $data['password'],$data['phone'], (bool)$data['actif']);
+                    $user = new Admin($data['nom'],$data['prenom'],$data['email'], $data['password'],$data['phone'], (bool)$data['actif']);
+                     $user->setId($data['id']);
+                    return $user;
             }
         }
         return null;
@@ -65,7 +71,4 @@ class AuthRepository {
             ':actif' => $actif
         ]);
     }
-
-        
-
 }

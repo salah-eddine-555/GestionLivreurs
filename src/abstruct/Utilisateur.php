@@ -21,6 +21,16 @@ abstract class Utilisateur {
         $this->actif = $actif;
     
     }
+
+      public function setId(int $id): void {
+        $this->id = $id;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+   
+
     public function getNom(){ return $this->nom; }
     public function getPrenom(){ return $this->prenom; }
     public function getPassword(){ return $this->password; }
