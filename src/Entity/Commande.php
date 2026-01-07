@@ -1,5 +1,5 @@
 <?php
-
+namespace Youcode\GestionLivreurs\Entity;
 
 class Commande {
     private int $idCommande;
@@ -9,14 +9,14 @@ class Commande {
     private string $AdresseArrive;
     private string $statut;
     private bool $isDelete = false;
-    // 
-    private array $offres = [];
+    // // 
+    // private array $offres = [];
 
     public function __construct(
-        string $idCommande, string $titreCommande, string $descriptionCommande,
+        string $titreCommande, string $descriptionCommande,
         string $AdresseDepart, string $AdresseArrive)
         {
-            $this->idCommande = $idCommande;
+            
             $this->titreCommande = $titreCommande;
             $this->descriptionCommande = $descriptionCommande;
             $this->AdresseDepart = $AdresseDepart;
@@ -28,6 +28,8 @@ class Commande {
 
         public function getTitreCommande(){ return $this->titreCommande; }
 
+        public function getDescriptionCommande(){ return $this->descriptionCommande; }
+        
         public function getAddresseDepart() { return $this->AdresseDepart; }
         public function getAdresseArrive() { return $this->AdresseArrive; }
 

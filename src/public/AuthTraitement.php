@@ -1,5 +1,8 @@
 <?php
 require_once "../controller/AuthController.php";
+require_once "../Service/AuthService.php";
+// require_once "../Repository/AuthRepository.php";
+use Youcode\GestionLivreurs\Repository\AuthRepository;
 
 class AuthTraitement {
 
@@ -10,7 +13,7 @@ class AuthTraitement {
     }
 
 
-    public function traitement(strig $action,array $data): void {
+    public function traitement(string $action,array $data): void {
 
         switch($action){
             case 'login':
@@ -24,7 +27,9 @@ class AuthTraitement {
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $authController = new AuthController();
+    $repo = new AuthRepository();
+    $service = new AuthService($repo);
+    $authController = new AuthController($service);
     $traiter = new AuthTraitement($authController);
     $action = $_POST['action'] ?? '';
     $traiter->traitement($action, $_POST);

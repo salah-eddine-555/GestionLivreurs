@@ -1,0 +1,10 @@
+{
+    "name": "youcode/gestion-livreurs",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Youcode\\GestionLivreurs\\": "src/"
+        }
+    },
+    "require": {}
+}

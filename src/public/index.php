@@ -1,4 +1,6 @@
-
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
+ ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -255,6 +257,7 @@
     
         <?php
             include "../views/nav.php";
+
         ?>
     <!-- Hero Section -->
     <section class="hero-section">

@@ -328,14 +328,16 @@
                 Email ou mot de passe incorrect
             </div>
 
-            <form id="loginForm" onsubmit="handleLogin(event)">
+            <form id="loginForm" method = "POST" action="../public/AuthTraitement.php">
                 <div class="form-group">
                     <label for="email">Email</label>
+                    <input type="hidden" name="action" value ="login">
                     <div class="input-wrapper">
                         
                         <input 
                             type="email" 
                             id="email" 
+                            name="email"
                             class="form-control" 
                             placeholder="votre.email@exemple.com"
                             required
@@ -349,6 +351,7 @@
                         <input 
                             type="password" 
                             id="password" 
+                            name="password"
                             class="form-control" 
                             placeholder="••••••••"
                             required

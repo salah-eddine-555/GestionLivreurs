@@ -394,7 +394,8 @@
             <div class="error-message" id="errorMessage"></div>
             <div class="success-message" id="successMessage"></div>
 
-            <form id="signupForm" onsubmit="handleSignup(event)">
+            <form id="signupForm" method="POST" action="../public/AuthTraitement.php">
+                <input type="hidden" name="action" value="register">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="prenom">Prénom <span class="required">*</span></label>
@@ -403,6 +404,7 @@
                             <input 
                                 type="text" 
                                 id="prenom" 
+                                name="prenom"
                                 class="form-control" 
                                 placeholder="Jean"
                                 required
@@ -417,6 +419,7 @@
                             <input 
                                 type="text" 
                                 id="nom" 
+                                name="nom"
                                 class="form-control" 
                                 placeholder="Dupont"
                                 required
@@ -432,6 +435,7 @@
                         <input 
                             type="email" 
                             id="email" 
+                            name="email"
                             class="form-control" 
                             placeholder="votre.email@exemple.com"
                             required
@@ -446,6 +450,7 @@
                         <input 
                             type="tel" 
                             id="telephone" 
+                            name="phone"
                             class="form-control" 
                             placeholder="+212 6XX XXX XXX"
                             required
@@ -457,11 +462,10 @@
                     <label for="role">Type de compte <span class="required">*</span></label>
                     <div class="input-wrapper">
                         <span class="input-icon">💼</span>
-                        <select id="role" class="form-control" required>
+                        <select name="role" id="role" class="form-control" required>
                             <option value="">Sélectionnez un type</option>
-                            <option value="client">Client</option>
-                            <option value="livreur">Livreur</option>
-                            <option value="entreprise">Entreprise</option>
+                            <option  value="client">Client</option>
+                            <option  value="livreur">Livreur</option>
                         </select>
                     </div>
                 </div>
@@ -473,6 +477,7 @@
                         <input 
                             type="password" 
                             id="password" 
+                            name="password"
                             class="form-control" 
                             placeholder="••••••••"
                             required
@@ -499,7 +504,8 @@
                         <span class="input-icon">🔒</span>
                         <input 
                             type="password" 
-                            id="confirmPassword" 
+                            id="confirmPassword"
+                            name="confirmPassword" 
                             class="form-control" 
                             placeholder="••••••••"
                             required

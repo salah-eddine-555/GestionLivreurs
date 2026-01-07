@@ -1,5 +1,8 @@
 <?php
 
+namespace Youcode\GestionLivreurs\config;
+use PDO;
+use PDOException;
 
 class Database {
 
@@ -11,7 +14,7 @@ class Database {
             echo "connexion succfully";
 
             return $conn;
-        }catch(Exception $e){
+        }catch(PDOException  $e){
             Die("erreur lorsque la connexion au base de donnee : " . $e->getMessage());
         }
     }
