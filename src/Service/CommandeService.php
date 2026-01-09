@@ -30,6 +30,43 @@ class CommandeService {
 
     }
 
+    
+   public function getCommandesByClient(int $clientId): array
+    {
+        $rows = $this->repoCommande->findByClientId($clientId);
+        $commandes = [];
+
+        foreach ($rows as $row) {
+            $commande = new Commande(
+                $row['titreCommande'],
+                $row['descriptionCommande'],
+                $row['adresseDepart'],
+                $row['adresseArrive']
+            );
+
+            $commande->setId((int) $row['idCommande']);
+            $commande->setStatut($row['statut']);
+            $commande->setCreatedAt($row['created_at']);
+
+            $commandes[] = $commande;
+        }
+
+        return $commandes;
+    }
+
+
+    public function findCommandeParId(int $id): Commande {
+
+    $commande = $this->repoCommande->findCommandeById($id);
+
+    if(!$commande){
+        echo "n'existe pas acune commande pour ce id ";
+    }
+
+    return $commande;
+    }
+
+
    
         private function ValidateIsEmpty(array $data): void {
             foreach($data as $key){

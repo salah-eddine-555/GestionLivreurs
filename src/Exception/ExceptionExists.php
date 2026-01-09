@@ -1,5 +1,6 @@
 <?php
 namespace Youcode\GestionLivreurs\Exception;
+use Exception;
 
 class ExceptionExists extends Exception {
 

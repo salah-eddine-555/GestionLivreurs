@@ -11,7 +11,7 @@ class Database {
         try{
             $conn = new PDO('mysql:host=localhost;dbname=Livraison', 'root', '');
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "connexion succfully";
+            
 
             return $conn;
         }catch(PDOException  $e){

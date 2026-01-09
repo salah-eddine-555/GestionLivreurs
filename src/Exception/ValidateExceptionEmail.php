@@ -1,6 +1,7 @@
 <?php
-
 namespace Youcode\GestionLivreurs\Exception;
+use Exception;
+
 
 class ValidateExceptionEmail extends Exception {
 

@@ -12,14 +12,45 @@ class CommandeController {
     }
 
     public function create(array $data){
-        SESSION_START();
+      
 
         if(!isset($_SESSION['id'])){
             die("utilsateur non connecte");
         }
         $this->service->creeCommande($data, $_SESSION['id']);
-        header("location: ../views/client/client.php");
+        header("Location: /GestionLivreurs/src/public/index.php?action=clientCommandes");
         exit();
     }
 
+     public function TransformeListCommandesAuView(): void
+    {
+    if (!isset($_SESSION['id'])) {
+        die('Utilisateur non connecté');
+    }
+
+    $clientId = (int) $_SESSION['id'];
+    $commandes = $this->service->getCommandesByClient($clientId);
+
+    require __DIR__ . '/../views/client/client.php';
+    }
+
+    public function show(int $id){
+
+    if(!isset($_SESSION['id'])){
+        die("Utilisateur non connecter");
+    }
+
+    $commande = $this->service->findCommandeParId($id);
+
+    require __DIR__ . '/../views/commandeDetails.php';
+    }
+
+
+
 }
+
+
+// $clientId = (int) $_SESSION['id'];
+// $commandes = $this->service->getCommandesByClient($clientId);
+// var_dump($commandes);
+// require __DIR__ . '/../views/client/client.php';

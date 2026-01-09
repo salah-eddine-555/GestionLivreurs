@@ -62,7 +62,7 @@ class AuthController {
                 header('location: ../views/admin/layout.php');
                 exit();
             case 'client':
-                header('location: ../views/client/client.php');
+                header('location: /GestionLivreurs/src/public/index.php?action=clientCommandes');
                 exit();
             case 'livreur':
                 header("location: ../views/livreur/livreur.php");
