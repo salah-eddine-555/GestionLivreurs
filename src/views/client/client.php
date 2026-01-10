@@ -67,52 +67,56 @@
             </div>
 
             <!-- Statistiques rapides -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-600 text-sm">Total commandes</p>
-                            <p class="text-2xl font-bold text-gray-800">12</p>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total commandes</p>
+                                <p class="text-2xl font-bold text-gray-800"><?= $statistiques['total'] ?? 0; ?></p>
+                            </div>
+                            <div class="bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-shopping-cart text-blue-600"></i>
+                            </div>
                         </div>
-                        <div class="bg-blue-100 p-3 rounded-full">
-                            <i class="fas fa-shopping-cart text-blue-600"></i>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">En attente</p>
+                                <p class="text-2xl font-bold text-gray-800"><?= $statistiques['en_attente'] ?? 0; ?></p>
+                            </div>
+                            <div class="bg-yellow-100 p-3 rounded-full">
+                                <i class="fas fa-clock text-yellow-600"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">En cours</p>
+                                <p class="text-2xl font-bold text-gray-800"><?= $statistiques['en_cours'] ?? 0; ?></p>
+                            </div>
+                            <div class="bg-indigo-100 p-3 rounded-full">
+                                <i class="fas fa-truck text-indigo-600"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Terminées</p>
+                                <p class="text-2xl font-bold text-gray-800"><?= $statistiques['terminee'] ?? 0; ?></p>
+                            </div>
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-600 text-sm">En attente</p>
-                            <p class="text-2xl font-bold text-gray-800">3</p>
-                        </div>
-                        <div class="bg-yellow-100 p-3 rounded-full">
-                            <i class="fas fa-clock text-yellow-600"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-600 text-sm">En cours</p>
-                            <p class="text-2xl font-bold text-gray-800">2</p>
-                        </div>
-                        <div class="bg-indigo-100 p-3 rounded-full">
-                            <i class="fas fa-truck text-indigo-600"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-gray-600 text-sm">Terminées</p>
-                            <p class="text-2xl font-bold text-gray-800">7</p>
-                        </div>
-                        <div class="bg-green-100 p-3 rounded-full">
-                            <i class="fas fa-check-circle text-green-600"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
             <!-- Liste des commandes -->
             <div class="bg-white rounded-lg shadow overflow-hidden">

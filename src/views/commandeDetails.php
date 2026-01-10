@@ -8,11 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
-<body class="bg-gray-50">
-
+<header>
 <!-- Navigation -->
 <?php include_once __DIR__ . '/client/navigation.php'; ?>
+
+</header>
+
+<body class="bg-gray-50 mt-10">
+
+
 
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -148,8 +152,10 @@
                 <h3 class="text-xl font-bold text-gray-800 mb-4">
                     Actions rapides
                 </h3>
-
-                <div class="space-y-3">
+                 <button id="openUpdateCommande"  class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                            <i class="fas fa-edit mr-2"></i>Modifier la commande
+                </button>
+                <div class="space-y-3 mt-2">
                     <a href="index.php?action=clientCommandes"
                        class="block text-center px-4 py-2 border rounded-lg hover:bg-gray-50">
                         ← Retour aux commandes
@@ -168,5 +174,77 @@
     </div>
 </div>
 
+        <!-- Modal Nouvelle Commande -->
+        <div id="updateCommandeModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <div class="p-6 border-b">
+                    <h3 class="text-2xl font-bold text-gray-800">Modifier commande</h3>
+                </div>
+                <form id="newOrderForm" method = "POST" action="index.php?action=updateCommande" class="p-6 space-y-4">
+                    <div>
+                        <input type="hidden" name="idCommande" value="<?= $commande->getIdCommande(); ?>">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Titre</label>
+                        <input type="text" name="titre" 
+                        value="<?= htmlspecialchars($commande->getTitreCommande()); ?>"
+
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                            placeholder="Titre Commande"
+                            >
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea name="description"  rows="3"
+                             
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                placeholder="Décrivez votre commande..."><?= htmlspecialchars($commande->getDescriptionCommande()); ?></textarea>
+                    </div>
+                
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Adresse Depart</label>
+                            <input type="text" name="adresseDepart" 
+                                    value="<?= htmlspecialchars($commande->getAdresseDepart()); ?>"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Adresse Arrivee</label>
+                            <input type="text" name="adresseArrivee" 
+                                   value="<?= htmlspecialchars($commande->getAdresseArrive()); ?>"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                    </div>
+                    <div class="flex justify-end space-x-4 pt-4">
+                        <button type="button" id="cancelOrderBtn" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Annuler
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            Créer la commande
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+                const openBtn = document.getElementById('openUpdateCommande');
+                const modal = document.getElementById('updateCommandeModal');
+                const cancelBtn = document.getElementById('cancelOrderBtn');
+
+                openBtn.addEventListener('click', () => {
+                    modal.classList.remove('hidden');
+                });
+
+                cancelBtn.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                });
+
+                // fermer si on clique sur le fond noir
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+        </script>
 </body>
 </html>

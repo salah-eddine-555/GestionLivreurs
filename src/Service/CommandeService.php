@@ -66,6 +66,22 @@ class CommandeService {
     return $commande;
     }
 
+    public function DeleteCommandeParId(int $id) {
+        $commande = $this->repoCommande->SupprimerCommandeParId($id);
+    }
+
+    public function UpdateCommande($id, $titre,$description,$adresseDepart,$adresseArrivee) {
+
+    $this->ValidateIsEmpty([$titre,$description,$adresseDepart,$adresseArrivee]);
+
+    $this->repoCommande->ModifierCommande($id, $titre,$description,$adresseDepart,$adresseArrivee);
+
+    }
+
+    public function StatistiqueCommandesClient(int $clientId){
+        return $this->repoCommande->getStatistiqueCommandesByClient($clientId);
+    }
+
 
    
         private function ValidateIsEmpty(array $data): void {

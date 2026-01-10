@@ -1,6 +1,9 @@
 <?php
+namespace Youcode\GestionLivreurs\controller;
 require_once __DIR__ . '/../../vendor/autoload.php';
-require_once "../service/AuthService.php";
+
+
+use  Youcode\GestionLivreurs\Service\AuthService;
 
 class AuthController {
     private AuthService $service;
@@ -52,8 +55,42 @@ class AuthController {
         }else {
             echo "Erreur lorsque de l'inscription ";
         }
-         
     }
+
+    public function showUserId(){
+        if(!isset($_SESSION['id'])){
+            die("utilisatuer non connecter");
+        }
+
+        $id = (int)$_SESSION['id'];
+        $user = $this->service->getUserId($id);
+        
+        require __DIR__ . '/../views/client/profil.php';
+    }
+
+    public function updateUser() {
+        if(!isset($_SESSION['id'])){
+            die("utilisatuer non connecter");
+        }
+
+        $id = $_SESSION['id'];
+
+        $data = [
+            'nom' => $_POST['nom']?? '',
+            'prenom' => $_POST['prenom']?? '',
+            'email' => $_POST['email']?? '',
+            'phone' =>$_POST['phone']?? '',
+            'phone' =>$_POST['phone']?? '',
+            'ancienPassword' => $_POST['ancienPassword'] ?? '',
+            'password' => $_POST['password'] ?? '',
+            'confirmPassword' => $_POST['confirmPassword'] ?? ''
+        ];
+
+        $this->service->UpdateUser($id ,$data);
+        header('location: index.php?action=profil');
+        exit();
+    }
+
 
     private function RedrectionParRole(string $role){
 

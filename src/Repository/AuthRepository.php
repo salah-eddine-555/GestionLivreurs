@@ -1,10 +1,7 @@
 <?php
 namespace Youcode\GestionLivreurs\Repository;
 
-// require_once '../abstruct/Utilisateur.php';
-// require_once '../Entity/Client.php';
-// require_once '../Entity/Livreur.php';
-// require_once '../Entity/Admin.php';
+
 
 use Youcode\GestionLivreurs\abstruct\Utilisateur;
 use Youcode\GestionLivreurs\Entity\Client;
@@ -70,5 +67,35 @@ class AuthRepository {
             ':role' => $role,
             ':actif' => $actif
         ]);
+    }
+
+    public function getUserById($id) {
+
+    $sql = "SELECT * FROM utilisateurs where id = :id";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute(['id' => $id]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function updateUserInfo(int $id,$nom,$prenom,$email,$phone): void {
+        $sql = "UPDATE utilisateurs SET nom = :nom, prenom = :prenom, email = :email, phone = :phone WHERE id = :id";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':nom'=> $nom,
+            ':prenom' => $prenom,
+            ':email' => $email,
+            ':phone' => $phone,
+            ':id' => $id
+        ]);
+    }
+
+    public function UpdatePassword(int $id,string $hasedPassword): void {
+
+     $sql = "UPDATE utilisateurs SET password = :password WHERE id = :id";
+     $stmt = $this->db->prepare($sql);
+
+     $stmt->execute([':id' => $id]);
     }
 }

@@ -77,8 +77,55 @@ class CommandeRepository {
         $commande->setCreatedAt($data['created_at']);
         return $commande;
         
+    }
+
+    public function SupprimerCommandeParId($id){
+
+            $sql = "UPDATE commandes SET isDelete = 1 WHERE idCommande = :id";
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->execute([':id' => $id]);
+    }
+
+    public function ModifierCommande($id, $titre,$description,$adresseDepart,$adresseArrivee) {
+
+         $sql = "
+            UPDATE commandes
+            SET titreCommande = :titre,
+                descriptionCommande = :description,
+                adresseDepart = :adresseDepart,
+                adresseArrive = :adresseArrive
+            WHERE idCommande = :id
+        ";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            ':titre' => $titre,
+            ':description' => $description,
+            ':adresseDepart' => $adresseDepart,
+            ':adresseArrive' => $adresseArrivee,
+            ':id' => $id
+        ]);
+    }
+
+    public function getStatistiqueCommandesByClient($clientId){
+
+        $sql = "SELECT 
+                COUNT(*) AS total,
+                SUM(statut = 'cree') AS en_attente,
+                SUM(statut = 'en_cours') AS en_cours,
+                SUM(statut = 'livree') AS terminee
+                FROM commandes WHERE id_client = :idClient AND isDelete = 0";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':idClient'=> $clientId]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
 
     }
+
+
 }
 
 
