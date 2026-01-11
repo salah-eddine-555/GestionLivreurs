@@ -29,6 +29,12 @@ if (str_starts_with($action, 'livreur.')) {
     exit;
 }
 
+// // Routes pour les  offres
+if (str_starts_with($action, 'offre.')) {
+    require __DIR__ . '/../routes/offre.php';
+    exit;
+}
+
 
 switch ($action) {
 
