@@ -57,17 +57,21 @@ class CommandeService {
 
     public function findCommandeParId(int $id): Commande {
 
-    $commande = $this->repoCommande->findCommandeById($id);
-
-    if(!$commande){
-        echo "n'existe pas acune commande pour ce id ";
-    }
-
-    return $commande;
+            $commande = $this->repoCommande->findCommandeById($id);
+        
+            if(!$commande){
+                echo "n'existe pas acune commande pour ce id ";
+            }
+        
+            return $commande;
     }
 
     public function DeleteCommandeParId(int $id) {
         $commande = $this->repoCommande->SupprimerCommandeParId($id);
+    }
+
+     public function getAllCommandes(): array {
+        return $this->repoCommande->getAllCommandes();
     }
 
     public function UpdateCommande($id, $titre,$description,$adresseDepart,$adresseArrivee) {

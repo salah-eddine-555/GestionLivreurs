@@ -314,7 +314,7 @@
 </head>
 <body>
     <!-- Header -->
-    <?php include "./nav.php" ?>
+    <?php include __DIR__ . '/nav.php'; ?>
 
     <!-- Login Section -->
     <div class="login-container">

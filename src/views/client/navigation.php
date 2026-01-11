@@ -5,10 +5,10 @@
                     <h1 class="text-2xl font-bold text-indigo-600">LivraisonApp</h1>
                 </div>
                     <div class="flex items-center space-x-2">
-                        <a href="profil.html" class="text-gray-700 hover:text-indigo-600 transition">Jean Dupont</a>
-                        <button class="text-gray-600 hover:text-indigo-600 transition">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
+                        <a href="/GestionLivreurs/src/public/index.php?action=Deconnexion"
+                                class="text-gray-600 hover:text-indigo-600 transition">
+                                 <i class="fas fa-sign-out-alt"></i> Déconnexion
+                        </a>
                     </div>
                 </div>
             </div>

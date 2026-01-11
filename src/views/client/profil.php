@@ -1,3 +1,11 @@
+<?php
+$homeAction = ($_SESSION['role'] === 'livreur')
+    ? 'livreur.commandes'
+    : 'clientCommandes';
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,7 +22,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="/GestionLivreurs/src/public/index.php?action=clientCommandes" class="text-indigo-600 hover:text-indigo-800 mr-4">
+                    <a href="/GestionLivreurs/src/public/index.php?action=<?= $homeAction ?>" class="text-indigo-600 hover:text-indigo-800 mr-4">
                         <i class="fas fa-arrow-left"></i>
                     </a>
                     <h1 class="text-2xl font-bold text-indigo-600">LivraisonApp</h1>
@@ -99,9 +107,10 @@
                 </div>
                 
                 <div class="flex justify-end space-x-4 pt-4">
-                    <button type="button" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
-                        Annuler
-                    </button>
+                  <a href="/GestionLivreurs/src/public/index.php?action=<?= $homeAction ?>"
+                     class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 inline-block">
+                     Annuler
+                 </a>
                     <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                         Enregistrer les modifications
                     </button>
@@ -110,7 +119,7 @@
         </div>
     </div>
 
-    <script src="assets/js/profil.js"></script>
+    <!-- <script src="assets/js/profil.js"></script> -->
     <script src="assets/js/dashboard-selector.js"></script>
 </body>
 </html>

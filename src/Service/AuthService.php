@@ -8,6 +8,11 @@ use Youcode\GestionLivreurs\Exception\EmptyException;
 use Youcode\GestionLivreurs\Exception\ExceptionExists;
 use Youcode\GestionLivreurs\Exception\ValidateExceptionEmail;
 
+use Youcode\GestionLivreurs\Entity\Livreur;
+use Youcode\GestionLivreurs\Entity\Client;
+use Youcode\GestionLivreurs\Entity\Admin;
+
+
 
 class AuthService {
     //

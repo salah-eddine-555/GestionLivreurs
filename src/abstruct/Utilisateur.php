@@ -2,7 +2,7 @@
 namespace Youcode\GestionLivreurs\abstruct;
 
 abstract class Utilisateur {
-    protected int $id;
+    protected ?int $id = null;
     protected string $nom;
     protected string $prenom;
     protected string $email;
@@ -26,7 +26,7 @@ abstract class Utilisateur {
         $this->id = $id;
     }
 
-    public function getId(){
+    public function getId() :?int {
         return $this->id;
     }
    

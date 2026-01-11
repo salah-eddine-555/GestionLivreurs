@@ -51,10 +51,20 @@ class AuthController {
             $_SESSION['role'] = $user->getRole();
             $_SESSION['nom'] = $user->getNom();
 
-            $this->RedrectionParRole($user->getRole());
+           require __DIR__ . '/../views/connexion.php';
         }else {
             echo "Erreur lorsque de l'inscription ";
         }
+    }
+
+    public function Deconnexion(){
+
+        session_unset();
+
+        session_destroy();
+
+        header("location: ../views/home.php");
+        exit();
     }
 
     public function showUserId(){
@@ -102,7 +112,7 @@ class AuthController {
                 header('location: /GestionLivreurs/src/public/index.php?action=clientCommandes');
                 exit();
             case 'livreur':
-                header("location: ../views/livreur/livreur.php");
+                header("location: /GestionLivreurs/src/public/index.php?action=livreur.commandes");
                 exit();
             default :
                 'Role invalide';

@@ -1,8 +1,11 @@
 <?php
 require_once "../controller/AuthController.php";
-require_once "../Service/AuthService.php";
+
 // require_once "../Repository/AuthRepository.php";
 use Youcode\GestionLivreurs\Repository\AuthRepository;
+use Youcode\GestionLivreurs\Service\AuthService;
+use Youcode\GestionLivreurs\controller\AuthController;
+
 
 class AuthTraitement {
 

@@ -23,6 +23,11 @@ $authService = new AuthService($authrepo);
 $authcontroller = new AuthController($authService);
 
 
+// // Routes pour les  livreur
+if (str_starts_with($action, 'livreur.')) {
+    require __DIR__ . '/../routes/livreur.php';
+    exit;
+}
 
 
 switch ($action) {
@@ -62,11 +67,7 @@ switch ($action) {
     case 'notifications':
         require __DIR__ . '/../views/client/notifications.php';
         break;
-    
-    case 'profil':
-            require __DIR__ . '/../views/client/profil.php';
-            break;
-            
+
     case 'updateProfile':
         if($_SERVER['REQUEST_METHOD'] !== 'POST'){
             die("Method not autorise .");
@@ -74,6 +75,11 @@ switch ($action) {
 
         $controller = new AuthController($authService);
         $controller->updateUser();
+        break;
+    
+    case 'Deconnexion':
+        $controller = new AuthController($authService);
+        $controller->Deconnexion();
         break;
 
 

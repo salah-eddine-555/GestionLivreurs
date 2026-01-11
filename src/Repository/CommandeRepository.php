@@ -87,6 +87,13 @@ class CommandeRepository {
             $stmt->execute([':id' => $id]);
     }
 
+    public function getAllCommandes():array {
+        $sql  = "select * from commandes WHERE  isDelete = 0 ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function ModifierCommande($id, $titre,$description,$adresseDepart,$adresseArrivee) {
 
          $sql = "

@@ -10,36 +10,7 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed top-0 left-0 right-0 z-40">
-        <div class="px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-indigo-600">LivraisonApp</h1>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <select id="dashboardSelector" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm">
-                            <option value="client">Dashboard Client</option>
-                            <option value="livreur" selected>Dashboard Livreur</option>
-                            <option value="admin">Dashboard Admin</option>
-                        </select>
-                    </div>
-                    <div class="relative">
-                        <button id="notificationBtn" class="relative p-2 text-gray-600 hover:text-indigo-600 transition">
-                            <i class="fas fa-bell text-xl"></i>
-                            <span id="notificationBadge" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">2</span>
-                        </button>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <a href="profil.html" class="text-gray-700 hover:text-indigo-600 transition">Martin Dubois</a>
-                        <button class="text-gray-600 hover:text-indigo-600 transition">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+   <?php include_once __DIR__ . '/../client/navigation.php'; ?>
 
     <div class="flex pt-16">
         <!-- Sidebar -->
@@ -61,11 +32,7 @@
                     <i class="fas fa-bell"></i>
                     <span>Notifications</span>
                     <span class="ml-auto bg-red-500 text-white text-xs rounded-full px-2 py-1">2</span>
-                </a>
-                <a href="chat.html" class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition">
-                    <i class="fas fa-comments"></i>
-                    <span>Messages</span>
-                </a>
+                    
                 <a href="profil.html" class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition">
                     <i class="fas fa-user"></i>
                     <span>Mon profil</span>
@@ -146,116 +113,62 @@
         </div>
 
         <!-- Liste des commandes -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Carte commande -->
-            <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-800">Commande #001</h3>
-                        <p class="text-sm text-gray-600">15/01/2024</p>
-                    </div>
-                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold">
-                        En attente
-                    </span>
-                </div>
-                <div class="mb-4">
-                    <p class="text-gray-700 mb-2"><strong>Description:</strong></p>
-                    <p class="text-sm text-gray-600">Colis fragile - Électronique</p>
-                </div>
-                <div class="mb-4">
-                    <p class="text-gray-700 mb-2"><strong>Adresse:</strong></p>
-                    <p class="text-sm text-gray-600">123 Rue Example, 75001 Paris</p>
-                </div>
-                <div class="mb-4">
-                    <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-xs">Fragile</span>
-                    <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs ml-2">Express</span>
-                </div>
-                <div class="mb-4 p-3 bg-gray-50 rounded">
-                    <p class="text-xs text-gray-600 mb-1">Offres reçues:</p>
-                    <p class="text-sm font-semibold text-gray-800">3 offres (prix masqués)</p>
-                </div>
-                <div class="flex space-x-2">
-                    <a href="commande-livreur-detail.html?id=1" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-center">
-                        Voir détails
-                    </a>
-                    <button class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">    
 
-            <!-- Carte commande -->
-            <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-800">Commande #004</h3>
-                        <p class="text-sm text-gray-600">16/01/2024</p>
-                    </div>
-                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold">
-                        En attente
-                    </span>
-                </div>
-                <div class="mb-4">
-                    <p class="text-gray-700 mb-2"><strong>Description:</strong></p>
-                    <p class="text-sm text-gray-600">Livraison standard</p>
-                </div>
-                <div class="mb-4">
-                    <p class="text-gray-700 mb-2"><strong>Adresse:</strong></p>
-                    <p class="text-sm text-gray-600">456 Avenue Test, 69000 Lyon</p>
-                </div>
-                <div class="mb-4">
-                    <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs">Standard</span>
-                </div>
-                <div class="mb-4 p-3 bg-gray-50 rounded">
-                    <p class="text-xs text-gray-600 mb-1">Offres reçues:</p>
-                    <p class="text-sm font-semibold text-gray-800">1 offre (prix masqué)</p>
-                </div>
-                <div class="flex space-x-2">
-                    <a href="commande-livreur-detail.html?id=4" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-center">
-                        Voir détails
-                    </a>
-                    <button class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
+    <?php foreach($commandes as $commande): ?>
+    <!-- Carte commande -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6">
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <h3 class="text-lg font-bold text-gray-800">Commande #<?= $commande['idCommande'] ?></h3>
+                <p class="text-sm text-gray-600"><?= $commande['created_at'] ?></p>
             </div>
-
-            <!-- Carte commande -->
-            <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-800">Commande #005</h3>
-                        <p class="text-sm text-gray-600">16/01/2024</p>
-                    </div>
-                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-semibold">
-                        En attente
-                    </span>
-                </div>
-                <div class="mb-4">
-                    <p class="text-gray-700 mb-2"><strong>Description:</strong></p>
-                    <p class="text-sm text-gray-600">Colis volumineux</p>
-                </div>
-                <div class="mb-4">
-                    <p class="text-gray-700 mb-2"><strong>Adresse:</strong></p>
-                    <p class="text-sm text-gray-600">789 Boulevard Demo, 13000 Marseille</p>
-                </div>
-                <div class="mb-4">
-                    <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">Volumineux</span>
-                </div>
-                <div class="mb-4 p-3 bg-gray-50 rounded">
-                    <p class="text-xs text-gray-600 mb-1">Offres reçues:</p>
-                    <p class="text-sm font-semibold text-gray-800">Aucune offre</p>
-                </div>
-                <div class="flex space-x-2">
-                    <a href="commande-livreur-detail.html?id=5" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-center">
-                        Voir détails
-                    </a>
-                    <button class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
+            <span class="px-2 py-1 <?= getStatusColor($commande['statut']) ?> rounded-full text-xs font-semibold">
+                <?= ucfirst(str_replace('_',' ',$commande['statut'])) ?>
+            </span>
         </div>
+        <div class="mb-4">
+            <p class="text-gray-700 mb-2"><strong>Titre:</strong></p>
+            <p class="text-sm text-gray-600"><?= htmlspecialchars($commande['titreCommande']) ?></p>
+        </div>
+        <div class="mb-4">
+            <p class="text-gray-700 mb-2"><strong>Description:</strong></p>
+            <p class="text-sm text-gray-600"><?= htmlspecialchars($commande['descriptionCommande']) ?></p>
+        </div>
+        <div class="mb-4">
+            <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs">
+                <?= htmlspecialchars($commande['titreCommande']) ?>
+            </span>
+        </div>
+        <div class="mb-4 p-3 bg-gray-50 rounded">
+            <p class="text-xs text-gray-600 mb-1">Offres reçues:</p>
+            <p class="text-sm font-semibold text-gray-800">Aucune offre</p>
+        </div>
+        <div class="flex space-x-2">
+            <a href="index.php?action=livreur.commande.detail&id=<?= $commande['idCommande'] ?>" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition text-center">
+                Voir détails
+            </a>
+            <button class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <?php endforeach; ?>
+
+</div>
+
+<?php
+// Fonction pour colorer le statut
+function getStatusColor($statut){
+    return match($statut){
+        'cree' => 'bg-yellow-100 text-yellow-800',
+        'en_cours' => 'bg-blue-100 text-blue-800',
+        'livree' => 'bg-green-100 text-green-800',
+        'annulee' => 'bg-red-100 text-red-800',
+        default => 'bg-gray-100 text-gray-800',
+    };
+}
+?>
         </main>
     </div>
 
