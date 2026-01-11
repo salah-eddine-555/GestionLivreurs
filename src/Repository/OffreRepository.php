@@ -29,4 +29,30 @@ class OffreRepository {
         ]);
     }
 
+     public function detailsCommandeOffre($id): array {
+
+        $sql  = "SELECT * FROM offres WHERE idCommande = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':id' => $id]);
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         $offres = [];
+
+        foreach ($results as $offre) {
+            $offres[] = new Offre(
+                $offre['idOffre'],
+                $offre['prixOffre'],
+                $offre['optionOffre'],
+                $offre['typeVehicule'],
+                $offre['dureeEstimee'],    
+                $offre['idCommande'],
+                $offre['id_livreur']
+            );
+        }
+
+        return $offres;
+
+    }
+
+
 }

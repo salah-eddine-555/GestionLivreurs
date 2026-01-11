@@ -58,11 +58,11 @@ class CommandeService {
     public function findCommandeParId(int $id): Commande {
 
             $commande = $this->repoCommande->findCommandeById($id);
-        
+
             if(!$commande){
                 echo "n'existe pas acune commande pour ce id ";
             }
-        
+
             return $commande;
     }
 
@@ -85,6 +85,8 @@ class CommandeService {
     public function StatistiqueCommandesClient(int $clientId){
         return $this->repoCommande->getStatistiqueCommandesByClient($clientId);
     }
+
+ 
 
 
    

@@ -29,6 +29,12 @@ class OffreService {
 
     }
 
+    public function detailsCommandeOffre(int $id){
+        
+        $offres = $this->repo->detailsCommandeOffre($id);
+        return $offres;
+    }
+    
     private function ValidateIsEmpty(array $data): void {
             foreach($data as $key){
                 if(empty($key)){

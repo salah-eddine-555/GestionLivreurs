@@ -40,7 +40,7 @@ class Offre {
     public function getDureeEstimee(): string { return $this->dureeEstimee; }
     public function getIdCommande(): int { return $this->idCommande; }
     public function getIdLivreur(): int { return $this->idLivreur; }
-
+    
     public function setPrixOffre(float $prixOffre): void { $this->prixOffre = $prixOffre; }
     public function setOptionOffre(string $optionOffre): void { $this->optionOffre = $optionOffre; }
     public function setTypeVehicule(string $typeVehicule): void { $this->typeVehicule = $typeVehicule; }

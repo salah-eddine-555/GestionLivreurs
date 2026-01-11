@@ -53,93 +53,77 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Colonne principale -->
             <div class="lg:col-span-2 space-y-6">
-<!-- Informations de la commande -->
-<div class="bg-white rounded-lg shadow p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-4">Informations de la commande</h3>
-    <div class="space-y-4">
-        <div class="flex justify-between py-2 border-b">
-            <span class="text-gray-600">Titre</span>
-            <span class="text-gray-800 font-medium"><?= htmlspecialchars($commande->getTitreCommande()) ?></span>
-        </div>
-        <div class="flex justify-between py-2 border-b">
-            <span class="text-gray-600">Description</span>
-            <span class="text-gray-800 font-medium"><?= htmlspecialchars($commande->getDescriptionCommande()) ?></span>
-        </div>
-        <div class="flex justify-between py-2 border-b">
-            <span class="text-gray-600">Date de création</span>
-            <span class="text-gray-800 font-medium"><?= date('d/m/Y à H:i', strtotime($commande->getCreatedAt())) ?></span>
-        </div>
-        <div class="flex justify-between py-2">
-            <span class="text-gray-600">Statut</span>
-            <span class="px-3 py-1 
-                <?= $commande->getStatut() === 'cree' ? 'bg-yellow-100 text-yellow-800' : 
-                    ($commande->getStatut() === 'en_cours' ? 'bg-blue-100 text-blue-800' : 
-                    ($commande->getStatut() === 'livree' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800')) ?>
-                rounded-full text-sm font-semibold">
-                <?= ucfirst(str_replace('_', ' ', $commande->getStatut())) ?>
-            </span>
-        </div>
-    </div>
-</div>
-
-<!-- Adresse de livraison -->
-<div class="bg-white rounded-lg shadow p-6">
-    <h3 class="text-xl font-bold text-gray-800 mb-4">
-        <i class="fas fa-map-marker-alt text-indigo-600 mr-2"></i>Adresse de livraison
-    </h3>
-    <div class="space-y-2">
-        <p class="text-gray-800"><strong>Adresse Depart: </strong><?= htmlspecialchars($commande->getAdresseDepart()) ?></p>
-        <p class="text-gray-800"><strong>Adresse d'arrivee: </strong><?= htmlspecialchars($commande->getAdresseArrive()) ?></p>
-    </div>
-</div>
-                <!-- Offres des autres livreurs -->
+                <!-- Informations de la commande -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Offres des autres livreurs</h3>
-                    <p class="text-sm text-gray-600 mb-4">Vous pouvez voir les offres des autres livreurs, mais pas leurs prix</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Informations de la commande</h3>
                     <div class="space-y-4">
-                        <div class="border border-gray-200 rounded-lg p-4">
-                            <div class="flex justify-between items-start mb-3">
-                                <div>
-                                    <p class="font-semibold text-gray-800">Livreur: Sophie Martin</p>
-                                    <p class="text-sm text-gray-600">
-                                        <i class="fas fa-star text-yellow-500 mr-1"></i>4.5/5
-                                    </p>
-                                </div>
-                                <span class="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm font-semibold">
-                                    Prix masqué
-                                </span>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
-                                <div>
-                                    <i class="fas fa-clock mr-2"></i>Durée: 1h30
-                                </div>
-                                <div>
-                                    <i class="fas fa-motorcycle mr-2"></i>Véhicule: Moto
-                                </div>
-                            </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-600">Titre</span>
+                            <span class="text-gray-800 font-medium"><?= htmlspecialchars($commande->getTitreCommande()) ?></span>
                         </div>
-                        <div class="border border-gray-200 rounded-lg p-4">
-                            <div class="flex justify-between items-start mb-3">
-                                <div>
-                                    <p class="font-semibold text-gray-800">Livreur: Pierre Durand</p>
-                                    <p class="text-sm text-gray-600">
-                                        <i class="fas fa-star text-yellow-500 mr-1"></i>4.2/5
-                                    </p>
-                                </div>
-                                <span class="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm font-semibold">
-                                    Prix masqué
-                                </span>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
-                                <div>
-                                    <i class="fas fa-clock mr-2"></i>Durée: 2h
-                                </div>
-                                <div>
-                                    <i class="fas fa-car mr-2"></i>Véhicule: Voiture
-                                </div>
-                            </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-600">Description</span>
+                            <span class="text-gray-800 font-medium"><?= htmlspecialchars($commande->getDescriptionCommande()) ?></span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b">
+                            <span class="text-gray-600">Date de création</span>
+                            <span class="text-gray-800 font-medium"><?= date('d/m/Y à H:i', strtotime($commande->getCreatedAt())) ?></span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-gray-600">Statut</span>
+                            <span class="px-3 py-1 
+                                <?= $commande->getStatut() === 'cree' ? 'bg-yellow-100 text-yellow-800' : 
+                                    ($commande->getStatut() === 'en_cours' ? 'bg-blue-100 text-blue-800' : 
+                                    ($commande->getStatut() === 'livree' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800')) ?>
+                                rounded-full text-sm font-semibold">
+                                <?= ucfirst(str_replace('_', ' ', $commande->getStatut())) ?>
+                            </span>
                         </div>
                     </div>
+                </div>
+
+            <!-- Adresse de livraison -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-map-marker-alt text-indigo-600 mr-2"></i>Adresse de livraison
+                </h3>
+                <div class="space-y-2">
+                    <p class="text-gray-800"><strong>Adresse Depart: </strong><?= htmlspecialchars($commande->getAdresseDepart()) ?></p>
+                    <p class="text-gray-800"><strong>Adresse d'arrivee: </strong><?= htmlspecialchars($commande->getAdresseArrive()) ?></p>
+                </div>
+            </div>
+                <!-- Offres des autres livreurs -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Offres des autres livreurs</h3>
+                <p class="text-sm text-gray-600 mb-4">Vous pouvez voir les offres des autres livreurs, mais pas leurs prix</p>
+                <div class="space-y-4">
+
+                    <?php foreach ($offres as $offre) : ?>
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <!-- Nom du livreur : si tu as une relation livreur ou juste l'ID -->
+                                    <p class="font-semibold text-gray-800">Livreur ID: <?= htmlspecialchars($offre->getIdLivreur()) ?></p>
+                                    <!-- Ici tu peux mettre note du livreur si dispo -->
+                                    <p class="text-sm text-gray-600">
+                                        <i class="fas fa-star text-yellow-500 mr-1"></i>Note: 4.0/5
+                                    </p>
+                                </div>
+                                <span class="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm font-semibold">
+                                    Prix masqué
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                                <div>
+                                    <i class="fas fa-clock mr-2"></i>Durée: <?= htmlspecialchars($offre->getDureeEstimee()) ?>
+                                </div>
+                                <div>
+                                    <i class="fas fa-motorcycle mr-2"></i>Véhicule: <?= htmlspecialchars($offre->getTypeVehicule()) ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    
                 </div>
             </div>
 
