@@ -92,7 +92,7 @@
                     <p class="text-gray-800"><strong>Adresse d'arrivee: </strong><?= htmlspecialchars($commande->getAdresseArrive()) ?></p>
                 </div>
             </div>
-                <!-- Offres des autres livreurs -->
+                    <!-- Offres des autres livreurs -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Offres des autres livreurs</h3>
                 <p class="text-sm text-gray-600 mb-4">Vous pouvez voir les offres des autres livreurs, mais pas leurs prix</p>
@@ -126,71 +126,69 @@
                     
                 </div>
             </div>
-
             <!-- Colonne latérale - Formulaire d'offre -->
             <div class="space-y-6">
         <!-- Formulaire pour envoyer une offre -->
-            <div class="bg-white rounded-lg shadow p-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Envoyer une offre</h3>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Envoyer une offre</h3>
 
-                <form id="offerForm" class="space-y-4" method="POST" action="index.php?action=offre.creer">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Prix (€)</label>
-                        <input type="number" name="prixOffre" step="0.01" min="0" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                               placeholder="45.00">
+                        <form id="offerForm" class="space-y-4" method="POST" action="index.php?action=offre.creer">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Prix (€)</label>
+                                <input type="number" name="prixOffre" step="0.01" min="0" required
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                       placeholder="45.00">
+                            </div>
+
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Option</label>
+                                <select name="optionOffre" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                    <option value="">Sélectionnez une option</option>
+                                    <option value="Express">Express</option>
+                                    <option value="Fragile">Fragile</option>
+                                    <option value="Assurance">Assurance</option>
+                                </select>
+                            </div>
+
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Type de véhicule</label>
+                                <select name="typeVehicule" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                    <option value="">Sélectionnez un véhicule</option>
+                                    <option value="moto">Moto</option>
+                                    <option value="voiture">Voiture</option>
+                                    <option value="camion">Camion</option>
+                                </select>
+                            </div>
+
+                            <!-- Durée estimée (INT en minutes) -->
+                            <!-- Durée estimée (string) -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Durée estimée</label>
+                                <select name="dureeEstimee" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                    <option value="">Sélectionnez une durée</option>
+                                    <option value="30 minutes">30 minutes</option>
+                                    <option value="2 heures">2 heures</option>
+                                    <option value="5 heures">5 heures</option>
+                                    <option value="1 jour">1 jour</option>
+                                    <option value="3 jours">3 jours</option>
+                                </select>
+                            </div>
+
+                            <input type="hidden" name="idCommande" value="<?= $commande->getIdCommande() ?>">
+
+
+                            <input type="hidden" name="id_livreur" value="<?= $_SESSION['id'] ?>">
+
+                            <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                                <i class="fas fa-paper-plane mr-2"></i>Envoyer l'offre
+                            </button>
+                        </form>
                     </div>
-
-        
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Option</label>
-                        <select name="optionOffre" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                            <option value="">Sélectionnez une option</option>
-                            <option value="Express">Express</option>
-                            <option value="Fragile">Fragile</option>
-                            <option value="Assurance">Assurance</option>
-                        </select>
-                    </div>
-
-       
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Type de véhicule</label>
-                        <select name="typeVehicule" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                            <option value="">Sélectionnez un véhicule</option>
-                            <option value="moto">Moto</option>
-                            <option value="voiture">Voiture</option>
-                            <option value="camion">Camion</option>
-                        </select>
-                    </div>
-
-                    <!-- Durée estimée (INT en minutes) -->
-                    <!-- Durée estimée (string) -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Durée estimée</label>
-                        <select name="dureeEstimee" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                            <option value="">Sélectionnez une durée</option>
-                            <option value="30 minutes">30 minutes</option>
-                            <option value="2 heures">2 heures</option>
-                            <option value="5 heures">5 heures</option>
-                            <option value="1 jour">1 jour</option>
-                            <option value="3 jours">3 jours</option>
-                        </select>
-                    </div>
-
-                    <input type="hidden" name="idCommande" value="<?= $commande->getIdCommande() ?>">
-
-                   
-                    <input type="hidden" name="id_livreur" value="<?= $_SESSION['id'] ?>">
-            
-                    <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
-                        <i class="fas fa-paper-plane mr-2"></i>Envoyer l'offre
-                    </button>
-                </form>
-            </div>
-
 
                 <!-- Mon offre actuelle (si existe) -->
                 <div class="bg-indigo-50 rounded-lg shadow p-6 border border-indigo-200">

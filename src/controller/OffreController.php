@@ -22,6 +22,7 @@ class OffreController {
         $idLivreur    = (int) $_POST['id_livreur'];
 
         $this->service->CreeOffre($prixOffre,$optionOffre,$typeVehicule,$dureeEstimee,$idCommande,$idLivreur);
+
         header("Location: index.php?action=livreur.commandes");
         exit;
     }

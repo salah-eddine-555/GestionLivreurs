@@ -20,6 +20,10 @@ class CommandeService {
 
         $this->ValidateIsEmpty([$data['titre'], $data['description']]);
 
+        if($ClientId !== $_SESSION['id']){
+            exit();
+        }
+
         $commande = new Commande(
             $data['titre'],
             $data['description'],
@@ -50,7 +54,6 @@ class CommandeService {
 
             $commandes[] = $commande;
         }
-
         return $commandes;
     }
 
@@ -62,7 +65,6 @@ class CommandeService {
             if(!$commande){
                 echo "n'existe pas acune commande pour ce id ";
             }
-
             return $commande;
     }
 
